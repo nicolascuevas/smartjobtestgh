@@ -73,6 +73,10 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+
+  config.hosts << "eb7e86475e8b.ngrok.io"
+  config.hosts << "smartjobtest.herokuapp.com"
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
