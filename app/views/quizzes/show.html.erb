@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"><%= @quiz.name %></h1>
+</div>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @quiz.description %>
+</p>
+
+<p>
+  <strong>Quiz data:</strong>
+  <%= @quiz.quiz_data %>
+</p>
+
+<% @quiz.quiz_pages.each do |page| %>
+<div class="row">
+
+      <!-- Earnings (Monthly) Card Example -->
+    <div class="col-6">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <%= page.title %>
+        <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+		<%= link_to 'Back', quizzes_path %>
+
+
+      </div>
+      <div class="card-body">
+        
+        Preguntas: <%= page.questions.count %> <br/>
+
+        <%= link_to quiz_quiz_page_path(@quiz, page), class: "btn btn-facebook" do %>
+          Ver
+        <% end %>
+        
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+<% end %>
+
+
+
+
+<div class="row">
+
+      <!-- Earnings (Monthly) Card Example -->
+    <div class="col-12">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4">
+      <div class="card-header">
+
+      </div>
+      <div class="card-body">
+        
+
+        <div id="surveyContainer"></div>
+        
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+  var surveyJSON = "<%= j raw @quiz.quiz_data %>";
+
+  var survey = new Survey.Model(surveyJSON);
+
+    jQuery("#surveyContainer").Survey({
+        model:survey,
+        onComplete: function(){
+          test()
+        }
+    });
+
+    function test (){
+      console.log("send")
+    }
+
+
+</script>
+
+
+
+
+
+

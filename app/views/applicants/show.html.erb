@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"><%= @applicant.first_name %> <%= @applicant.last_name %></h1>
+</div>
+
+
+<p>
+  <strong>Email:</strong>
+  <%= link_to show_applicant_by_token_path(@applicant.token) do %>
+  	<%= @applicant.email %>
+  <% end %>
+  
+</p>
+
+
+<p>
+  <strong>Token:</strong>
+  <%= @applicant.token %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Back', applicants_path %>
+
+
+
+<% @applicant.applicant_tests.each do |test| %>
+
+	<div class="row">
+
+	      <!-- Earnings (Monthly) Card Example -->
+	    <div class="col-12">
+
+	    <!-- Default Card Example -->
+	    <div class="card mb-4">
+	      <div class="card-header">
+	      	<%= test.quiz.name %>
+	      </div>
+	      <div class="card-body">
+
+			<%= test.quiz.description %>	        
+
+			<%= link_to applicant_test_path(test), class: "btn btn-facebook" do %>
+	          Ver
+	        <% end %>
+	        
+	      </div>
+	    </div>
+
+
+	  </div>
+
+	</div>
+
+
+<% end %>

@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'Edit', edit_quiz_quiz_page_path(@quiz, @quiz_page) %> |
+<%= link_to 'Back', quiz_path(@quiz) %>
+
+
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"> <%= @quiz_page.title %></h1>
+</div>
+
+<div class="row">
+
+      <!-- Earnings (Monthly) Card Example -->
+    <div class="col-12">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4">
+      <div class="card-header">
+         <%= @quiz_page.title %>
+        
+
+      </div>
+      <div class="card-body">
+        <table>
+		  <thead>
+		    <tr>
+		      <th>Name</th>
+		      <th>Value</th>
+		      <th>Correct answer</th>
+		      <th>Type</th>
+		      <th>Inputtype</th>
+		      <th>Quiz</th>
+		      <th>Quiz page</th>
+		      <th></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @quiz_page.questions.each do |question| %>
+		      <tr>
+		        <td><%= question.name %></td>
+		        <td><%= question.value %></td>
+		        <td><%= question.correct_answer %></td>
+		        <td><%= question.field_type %></td>
+		        <td><%= question.input_type %></td>
+		        <td><%= question.quiz_id %></td>
+		        <td><%= question.quiz_page_id %></td>
+		        <td><%= link_to 'Show', quiz_quiz_page_question_path(@quiz, @quiz_page, question) %></td>
+		        <td><%= link_to 'Edit', edit_quiz_quiz_page_question_path(@quiz, @quiz_page, question) %></td>
+		        <td><%= link_to 'Destroy', quiz_quiz_page_question_path(@quiz, @quiz_page, question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+		<br>
+
+		<%= link_to 'New Question', new_quiz_quiz_page_question_path(@quiz, @quiz_page) %>
+        
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

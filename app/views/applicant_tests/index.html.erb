@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Applicant Tests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Applicant</th>
+      <th>Due date</th>
+      <th>Applicant test status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @applicant_tests.each do |applicant_test| %>
+      <tr>
+        <td><%= applicant_test.applicant_id %></td>
+        <td><%= applicant_test.due_date %></td>
+        <td><%= applicant_test.applicant_test_status_id %></td>
+        <td><%= link_to 'Show', applicant_test %></td>
+        <td><%= link_to 'Edit', edit_applicant_test_path(applicant_test) %></td>
+        <td><%= link_to 'Destroy', applicant_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Applicant Test', new_applicant_test_path %>

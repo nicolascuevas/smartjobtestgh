@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Correct answer</th>
+      <th>Type</th>
+      <th>Inputtype</th>
+      <th>Quiz</th>
+      <th>Quiz page</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.name %></td>
+        <td><%= question.value %></td>
+        <td><%= question.correct_answer %></td>
+        <td><%= question.field_type %></td>
+        <td><%= question.input_type %></td>
+        <td><%= question.quiz_id %></td>
+        <td><%= question.quiz_page_id %></td>
+        <td><%= link_to 'Show', quiz_quiz_page_question_path(@quiz, @quiz_page, question) %></td>
+        <td><%= link_to 'Edit', edit_quiz_quiz_page_question_path(@quiz, @quiz_page, question) %></td>
+        <td><%= link_to 'Destroy', quiz_quiz_page_question_path(@quiz, @quiz_page, question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_quiz_quiz_page_question_path(@quiz, @quiz_page) %>
+
+

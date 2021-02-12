@@ -1,0 +1,52 @@
+<%= form_with(model: [@quiz, @quiz_page, question]) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correct_answer %>
+    <%= form.text_field :correct_answer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :field_type %>
+    <%= form.text_field :field_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :input_type %>
+    <%= form.text_field :input_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quiz_id %>
+    <%= form.text_field :quiz_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quiz_page_id %>
+    <%= form.text_field :quiz_page_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

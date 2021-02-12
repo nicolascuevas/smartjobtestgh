@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @question.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @question.value %>
+</p>
+
+<p>
+  <strong>Correct answer:</strong>
+  <%= @question.correct_answer %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @question.type %>
+</p>
+
+<p>
+  <strong>Inputtype:</strong>
+  <%= @question.inputType %>
+</p>
+
+<p>
+  <strong>Quiz:</strong>
+  <%= @question.quiz_id %>
+</p>
+
+<p>
+  <strong>Quiz page:</strong>
+  <%= @question.quiz_page_id %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

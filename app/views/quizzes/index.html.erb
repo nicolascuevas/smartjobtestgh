@@ -1,0 +1,37 @@
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Tests</h1>
+</div>
+
+<%= link_to 'Crear Test', new_quiz_path %>
+
+
+<% @quizzes.each do |quiz| %>
+<div class="row">
+
+      <!-- Earnings (Monthly) Card Example -->
+    <div class="col-12">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <%= quiz.name %>
+        <%= link_to quiz_path(quiz), class: "btn btn-facebook" do %>
+          Ver
+        <% end %>
+        <%= link_to quiz_path(quiz), class: "btn btn-google " , method: :delete, data: { confirm: 'Are you sure?' }  do %>
+          Borrar
+        <% end %>
+      </div>
+      <div class="card-body">
+        <%= quiz.description %>
+        
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+<% end %>
+
