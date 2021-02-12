@@ -111,7 +111,7 @@ Rails.application.configure do
   # replica.
 
   config.hosts << "smartjobtest.herokuapp.com"
-  config.hosts << "testing.smartjob.us"
+  config.hosts << "testing.smartjob.us"ssp
   #
   # By default Rails will store a last write timestamp in the session. The
   # DatabaseSelector middleware is designed as such you can define your own
