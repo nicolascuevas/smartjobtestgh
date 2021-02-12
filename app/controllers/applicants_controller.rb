@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
   layout "applicant", only: [ :show_by_token ]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [ :show_by_token]
   before_action :set_applicant, only: %i[ show edit update destroy ]
   before_action :set_applicant_by_token, only: [ :show_by_token ]
 

@@ -1,5 +1,6 @@
 class ApplicantTestsController < ApplicationController
   layout "applicant", only: [ :show_test_by_applicant_token ]
+  before_action :authenticate_user!, except: [:show_test_by_applicant_token]
   before_action :set_applicant_by_token, only: [ :show_test_by_applicant_token ]
   before_action :set_applicant_test_after_applicant, only: [ :show_test_by_applicant_token ]
   before_action :set_applicant_test, only: %i[ show edit update destroy ]

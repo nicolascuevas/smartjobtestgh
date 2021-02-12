@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: sb_admin_production
-  username: sb_admin
-  password: <%= ENV['SB_ADMIN_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+
