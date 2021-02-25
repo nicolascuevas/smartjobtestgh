@@ -19,11 +19,16 @@ import datatable from 'imports-loader?define=>false!datatables.net'
 import datatableBS4 from 'imports-loader?define=>false!datatables.net-bs4'
 import './shared/sb-admin-2'
 import * as Survey from "survey-jquery/survey.jquery";
+import "knockout/build/output/knockout-latest"
+import "survey-knockout/survey.ko"
+import * as SurveyCreator from "survey-creator"
+
 
 import jQuery from "jquery";
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 global.Survey = global.Survey = Survey;
+global.SurveyCreator = global.SurveyCreator = SurveyCreator;
 
 Rails.start()
 Turbolinks.start()

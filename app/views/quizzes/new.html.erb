@@ -3,3 +3,17 @@
 <%= render 'form', quiz: @quiz %>
 
 <%= link_to 'Back', quizzes_path %>
+
+
+<div id="surveyCreatorContainer"></div>
+
+
+<script type="text/javascript">
+	SurveyCreator.StylesManager.applyTheme("darkblue");
+	var options = {showEmbededSurveyTab: true}; //see examples below
+var surveyCreator = new SurveyCreator.SurveyCreator("surveyCreatorContainer", options);
+//set function on save callback
+surveyCreator.saveSurveyFunc = saveMySurvey;
+
+
+</script>
