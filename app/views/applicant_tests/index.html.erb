@@ -18,9 +18,9 @@
         <td><%= applicant_test.applicant_id %></td>
         <td><%= applicant_test.due_date %></td>
         <td><%= applicant_test.applicant_test_status_id %></td>
-        <td><%= link_to 'Show', applicant_test %></td>
-        <td><%= link_to 'Edit', edit_applicant_test_path(applicant_test) %></td>
-        <td><%= link_to 'Destroy', applicant_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', applicant_applicant_test_path(applicant_test.applicant, applicant_test) %></td>
+        <td><%= link_to 'Edit', edit_applicant_applicant_test_path(applicant_test.applicant, applicant_test) %></td>
+        <td><%= link_to 'Destroy', applicant_applicant_test_path(applicant_test.applicant, applicant_test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Applicant Test', new_applicant_test_path %>
+<%= link_to 'New Applicant Test', new_applicant_applicant_test_path(@applicant) %>

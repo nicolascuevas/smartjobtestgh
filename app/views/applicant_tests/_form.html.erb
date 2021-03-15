@@ -1,4 +1,4 @@
-<%= form_with(model: applicant_test) do |form| %>
+<%= form_with(model: [@applicant, applicant_test] ) do |form| %>
   <% if applicant_test.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(applicant_test.errors.count, "error") %> prohibited this applicant_test from being saved:</h2>
@@ -11,20 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :applicant_id %>
-    <%= form.text_field :applicant_id %>
-  </div>
 
   <div class="field">
-    <%= form.label :due_date %>
+    <%= form.label :due_date, "Fecha Limite" %>
     <%= form.datetime_select :due_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :applicant_test_status_id %>
-    <%= form.text_field :applicant_test_status_id %>
-  </div>
 
   <div class="field">
     <%= form.label :quiz_id %>
@@ -32,6 +24,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Agregar Test al Postulante", class: "btn btn-info" %>
   </div>
 <% end %>

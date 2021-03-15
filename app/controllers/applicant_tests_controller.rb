@@ -4,6 +4,7 @@ class ApplicantTestsController < ApplicationController
   before_action :set_applicant_by_token, only: [ :show_test_by_applicant_token ]
   before_action :set_applicant_test_after_applicant, only: [ :show_test_by_applicant_token ]
   before_action :set_applicant_test, only: %i[ show edit update destroy ]
+  before_action :set_applicant, except: [ :show_test_by_applicant_token ]
 
   # GET /applicant_tests or /applicant_tests.json
   def index
@@ -20,7 +21,7 @@ class ApplicantTestsController < ApplicationController
 
   # GET /applicant_tests/new
   def new
-    @applicant_test = ApplicantTest.new
+    @applicant_test = @applicant.applicant_tests.new
   end
 
   # GET /applicant_tests/1/edit
@@ -29,12 +30,12 @@ class ApplicantTestsController < ApplicationController
 
   # POST /applicant_tests or /applicant_tests.json
   def create
-    @applicant_test = ApplicantTest.new(applicant_test_params)
+    @applicant_test = @applicant.applicant_tests.new(applicant_test_params)
 
     respond_to do |format|
       if @applicant_test.save
-        format.html { redirect_to @applicant_test, notice: "Applicant test was successfully created." }
-        format.json { render :show, status: :created, location: @applicant_test }
+        format.html { redirect_to applicant_url(@applicant), notice: "Test Agregado Correctamente." }
+        format.json { render :show, status: :created, location: applicant_url(@applicant) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @applicant_test.errors, status: :unprocessable_entity }
@@ -46,8 +47,8 @@ class ApplicantTestsController < ApplicationController
   def update
     respond_to do |format|
       if @applicant_test.update(applicant_test_params)
-        format.html { redirect_to @applicant_test, notice: "Applicant test was successfully updated." }
-        format.json { render :show, status: :ok, location: @applicant_test }
+        format.html { redirect_to applicant_url(@applicant), notice: "Test editado correctamente" }
+        format.json { render :show, status: :ok, location: applicant_url(@applicant) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @applicant_test.errors, status: :unprocessable_entity }
@@ -59,12 +60,16 @@ class ApplicantTestsController < ApplicationController
   def destroy
     @applicant_test.destroy
     respond_to do |format|
-      format.html { redirect_to applicant_tests_url, notice: "Applicant test was successfully destroyed." }
+      format.html { redirect_to applicant_url(@applicant), notice: "Test Eliminado Correctamente" }
       format.json { head :no_content }
     end
   end
 
   private
+
+    def set_applicant
+      @applicant = Applicant.find(params[:applicant_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant_test
       @applicant_test = ApplicantTest.find(params[:id])

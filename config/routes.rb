@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :applicant_tests
-  resources :applicants
+  
+  resources :applicants do
+    resources :applicant_tests
+  end
   get "applicant_info/:token", to: 'applicants#show_by_token', as: "show_applicant_by_token"
   get "applicant_info/:token/quiz/:applicant_test_id", to: 'applicant_tests#show_test_by_applicant_token', as: "show_test_by_applicant_token"
 

@@ -1,6 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 
+	<div class="row">
+
+	      <!-- Earnings (Monthly) Card Example -->
+	    <div class="col-12">
+
+	    <!-- Default Card Example -->
+	    <div class="card mb-4">
+	      <div class="card-body">
+
+	      	<%= link_to 'Editar Postulante', edit_applicant_path(@applicant), class: "btn btn-info" %>
+	      	<%= link_to 'Agregar Test', new_applicant_applicant_test_path(@applicant), class: "btn btn-warning" %>
+	      	<a href="" class="btn btn-success pull-right">Enviar Tests por Correo</a>
+	        
+	      </div>
+	    </div>
+
+
+	  </div>
+
+	</div>
+
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800"><%= @applicant.first_name %> <%= @applicant.last_name %></h1>
@@ -21,9 +42,6 @@
   <%= @applicant.token %>
 </p>
 
-<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
-<%= link_to 'Back', applicants_path %>
-
 
 
 <% @applicant.applicant_tests.each do |test| %>
@@ -36,14 +54,17 @@
 	    <!-- Default Card Example -->
 	    <div class="card mb-4">
 	      <div class="card-header">
-	      	<%= test.quiz.name %>
+	      	<%= test.quiz.name %> <span class="badge badge-info"><%= test.applicant_test_status.name %></span>
 	      </div>
 	      <div class="card-body">
 
-			<%= test.quiz.description %>	        
 
-			<%= link_to applicant_test_path(test), class: "btn btn-facebook" do %>
+			<%= test.quiz.description %>	        
+			<%= link_to applicant_applicant_test_path(@applicant, test), class: "btn btn-facebook" do %>
 	          Ver
+	        <% end %>
+	        <%= link_to applicant_applicant_test_path(@applicant, test), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+	        	Borrar
 	        <% end %>
 	        
 	      </div>
@@ -56,3 +77,6 @@
 
 
 <% end %>
+
+
+

@@ -1,5 +1,5 @@
-<h1>New Applicant Test</h1>
+<h1>Agregar Test a: <%= @applicant.full_name %></h1>
 
 <%= render 'form', applicant_test: @applicant_test %>
 
-<%= link_to 'Back', applicant_tests_path %>
+<%= link_to 'Volver', applicant_path( @applicant ), class: "btn btn-danger" %>
