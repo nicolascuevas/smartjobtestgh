@@ -52,7 +52,6 @@
 
     function test (result){
       console.log(result.data)
-      debugger;
       $.post( "/applicant_info/<%= @applicant.token %>/quiz/<%= @applicant_test.id %>/answers", {answers: result.data});
 
     }

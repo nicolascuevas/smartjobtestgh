@@ -20,6 +20,8 @@ class ApplicantTestsController < ApplicationController
   end
 
   def answer_test_by_applicant_token
+    @applicant_test.applicant_test_status_id = ApplicantTestStatus.where(name: "Completado").first.id
+    @applicant_test.save
     binding.pry
   end
 
