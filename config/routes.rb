@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   get "applicant_info/:token/quiz/:applicant_test_id", to: 'applicant_tests#show_test_by_applicant_token', as: "show_test_by_applicant_token"
 
 
+  post "applicant_info/:token/quiz/:applicant_test_id/answers", to: 'applicant_tests#answer_test_by_applicant_token', as: "answers_test_by_applicant_token"
+
   resources :quizzes do
   	resources :quiz_pages do
   		resources :questions
   	end
   end
-  devise_for :users, :controllers => { registrations: 'users/registrations',sessions: 'users/sessions' }
+  devise_for :users, :controllers => { registrations: 'users/registrations', sessions: 'users/sessions' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'examples#index'

@@ -52,13 +52,16 @@
     jQuery("#surveyContainer").Survey({
         model:survey,
         onComplete: function(){
-          test()
+          test();
         }
     });
 
-    function test (){
+    function test (result){
       console.log("send")
+      ///applicant_info/:token/quiz/:applicant_test_id/answers
+
     }
+
 
 
 </script>

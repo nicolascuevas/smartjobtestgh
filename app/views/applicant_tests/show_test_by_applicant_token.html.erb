@@ -45,13 +45,16 @@
 
     jQuery("#surveyContainer").Survey({
         model:survey,
-        onComplete: function(){
-          test()
+        onComplete: function(result){
+          test(result)
         }
     });
 
-    function test (){
-      console.log("send")
+    function test (result){
+      console.log(result.data)
+      debugger;
+      $.post( "/applicant_info/<%= @applicant.token %>/quiz/<%= @applicant_test.id %>/answers", {answers: result.data});
+
     }
 
 
