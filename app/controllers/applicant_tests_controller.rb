@@ -21,8 +21,9 @@ class ApplicantTestsController < ApplicationController
 
   def answer_test_by_applicant_token
     @applicant_test.applicant_test_status_id = ApplicantTestStatus.where(name: "Completado").first.id
-    @applicant_test.save
-    binding.pry
+    ApplicantTestAnswer.saveQuizAnswers(@applicant_test, params['answers'])
+
+    @applicant_test.check_answers
   end
 
   # GET /applicant_tests/new

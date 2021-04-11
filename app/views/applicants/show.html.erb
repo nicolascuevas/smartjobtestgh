@@ -57,8 +57,20 @@
 	      	<%= test.quiz.name %> <span class="badge badge-info"><%= test.applicant_test_status.name %></span>
 	      </div>
 	      <div class="card-body">
-
-
+	      	<% if test.applicant_test_status.name == "Completado" %>
+	      		<div>
+	      			<%= "Nota: #{test.grade}%" %>
+	      		</div>
+	      		<div>
+	      			<%= "Preguntas Correctas: #{test.applicant_test_answers.correct.count}" %>
+	      		</div>
+	      		<div>
+	      			<%= "Cantidad de Preguntas #{test.quiz.questions.count}" %>
+	      		</div>
+	      	<% end %>
+	      	
+	      	
+	      	<br>
 			<%= test.quiz.description %>	        
 			<%= link_to applicant_applicant_test_path(@applicant, test), class: "btn btn-facebook" do %>
 	          Ver
