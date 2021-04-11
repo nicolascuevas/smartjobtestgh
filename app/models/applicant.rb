@@ -1,6 +1,6 @@
 class Applicant < ApplicationRecord
 
-	has_many :applicant_tests
+	has_many :applicant_tests, dependent: :destroy
 	has_many :quizzes, through: :applicant_test
 
 
