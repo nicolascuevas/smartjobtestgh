@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hola <%= @applicant.first_name %>, te ha llegado una solicitud para responder los quizes de SmartJob !</p>
+    <p>
+    Detalle de solicitud<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @applicant.full_name %></p>
+    <p>Email: <%= @applicant.email %></p>
+    <p>
+    Message:<br>
+    Haz click en el siguiente link para responder los quizes.
+    </p>
+    <p>
+        <a href="/applicant_info/<%= @applicant.token %>">Ir a los Quizes</a>
+    </p>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 class ApplicantsController < ApplicationController
   layout "applicant", only: [ :show_by_token ]
   before_action :authenticate_user!, except: [ :show_by_token]
-  before_action :set_applicant, only: %i[ show edit update destroy ]
+  before_action :set_applicant, only: %i[ show edit update destroy send_test_via_email ]
   before_action :set_applicant_by_token, only: [ :show_by_token ]
 
   # GET /applicants or /applicants.json
@@ -64,6 +64,15 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def send_test_via_email
+    QuizMailer.with(applicant: @applicant).send_quiz_to_applicant.deliver_later
+
+    respond_to do |format|
+      format.html { redirect_to applicant_path(@applicant), notice: "Email enviado correctamente" }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant
@@ -73,6 +82,7 @@ class ApplicantsController < ApplicationController
     def set_applicant_by_token
       @applicant = Applicant.where(token: params[:token]).first
     end
+
 
     # Only allow a list of trusted parameters through.
     def applicant_params
