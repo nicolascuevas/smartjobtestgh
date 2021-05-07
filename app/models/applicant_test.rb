@@ -18,3 +18,4 @@ class ApplicantTest < ApplicationRecord
 	end
 
 end
+
