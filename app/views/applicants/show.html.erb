@@ -12,8 +12,10 @@
 
 	      	<%= link_to 'Editar Postulante', edit_applicant_path(@applicant), class: "btn btn-info" %>
 	      	<%= link_to 'Agregar Test', new_applicant_applicant_test_path(@applicant), class: "btn btn-warning" %>
-	      	<a href="" class="btn btn-success pull-right">Enviar Tests por Correo</a>
-	        
+			<%= link_to send_test_via_email_applicant_path(@applicant), method: :post, data: { confirm: 'Are you sure?' }  do %>
+				<button class="btn btn-success pull-right">Enviar Tests por Correo</button>
+			<% end %>
+
 	      </div>
 	    </div>
 

@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   
   resources :applicants do
+    member do
+      post :send_test_via_email
+    end
     resources :applicant_tests
   end
   get "applicant_info/:token", to: 'applicants#show_by_token', as: "show_applicant_by_token"
