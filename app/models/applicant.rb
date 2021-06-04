@@ -3,7 +3,7 @@ class Applicant < ApplicationRecord
 
 	has_many :applicant_tests, dependent: :destroy
 	has_many :quizzes, through: :applicant_test
-
+	belongs_to :user, optional: true
 
 	before_create :add_token
 

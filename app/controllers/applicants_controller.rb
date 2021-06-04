@@ -34,7 +34,7 @@ class ApplicantsController < ApplicationController
   # POST /applicants or /applicants.json
   def create
     @applicant = Applicant.new(applicant_params)
-
+    @applicant.user = current_user
     respond_to do |format|
       if @applicant.save
         format.html { redirect_to @applicant, notice: "Applicant was successfully created." }
