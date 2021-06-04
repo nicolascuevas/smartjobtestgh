@@ -2,32 +2,78 @@
 
 <h1>Postulantes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Token</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @applicants.each do |applicant| %>
-      <tr>
-        <td><%= applicant.email %></td>
-        <td><%= applicant.first_name %></td>
-        <td><%= applicant.last_name %></td>
-        <td><%= applicant.token %></td>
-        <td><%= link_to 'Show', applicant %></td>
-        <td><%= link_to 'Edit', edit_applicant_path(applicant) %></td>
-        <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to 'Agregar Postulante', new_applicant_path, class: "btn btn-success" %>
 
-<br>
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">
+        Buscar Postulantes
+      </div>
+      <div class="card-body">
 
-<%= link_to 'New Applicant', new_applicant_path %>
+        <%= form_tag(applicants_path, {:method => 'get', style: "width: 100%" , remote: false}) do %>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+              <label>Nombre</label>
+              <%= text_field_tag :first_name, params[:first_name], class: "form-control", :autocomplete => :off, placeholder: "" %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+              <label>Apellido</label>
+              <%= text_field_tag :last_name, params[:last_name], class: "form-control", :autocomplete => :off, placeholder: "" %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+              <label>Email</label>
+              <%= text_field_tag :email, params[:email], class: "form-control", :autocomplete => :off, placeholder: "" %>
+            </div>
+                
+
+   
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header">
+        Postulantes
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @applicants.each do |applicant| %>
+              <tr>
+                <td><%= applicant.email %></td>
+                <td><%= applicant.first_name %></td>
+                <td><%= applicant.last_name %></td>
+                <td><%= link_to 'Ver Tests', applicant, class:"btn btn-sm btn-info" %>
+                <%= link_to 'Borrar', applicant, method: :delete, data: { confirm: 'Seguro(a)?' }, class: "btn btn-sm btn-danger" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

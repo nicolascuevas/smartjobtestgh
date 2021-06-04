@@ -12,18 +12,19 @@
   <% end %>
 
 
-  <div class="field">
-    <%= form.label :due_date, "Fecha Limite" %>
-    <%= form.datetime_select :due_date %>
+ <div class="form-group">
+    <%= form.label :due_date, "Correo Eletrónico" %>
+    <%= form.datetime_select :due_date, {} %>
   </div>
 
-
-  <div class="field">
-    <%= form.label :quiz_id %>
-    <%= form.collection_select :quiz_id, Quiz.all, :id, :name %>
+  <div class="form-group">
+    <%= form.label :quiz_id, "Test" %>
+    <%= form.collection_select :quiz_id, Quiz.all, :id, :name, {}, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Agregar Test al Postulante", class: "btn btn-info" %>
+    <%= form.submit "Agregar Test al Postulante", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+

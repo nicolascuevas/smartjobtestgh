@@ -1,5 +1,19 @@
-<h1>Agregar Test a: <%= @applicant.full_name %></h1>
-
-<%= render 'form', applicant_test: @applicant_test %>
 
 <%= link_to 'Volver', applicant_path( @applicant ), class: "btn btn-danger" %>
+
+<br><br>
+
+<div class="row">
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-12">
+			<!-- Default Card Example -->
+			<div class="card mb-4">
+				<div class="card-header">
+					Información del Test de <%= @applicant.full_name %>
+				</div>
+				<div class="card-body">
+					<%= render 'form', applicant_test: @applicant_test %>
+				</div>
+			</div>
+		</div>
+	</div>

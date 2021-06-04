@@ -39,58 +39,70 @@
 </p>
 
 
-<p>
-  <strong>Token:</strong>
-  <%= @applicant.token %>
-</p>
-
-
-
-<% @applicant.applicant_tests.each do |test| %>
+<% if @applicant.applicant_tests.count == 0 %>
 
 	<div class="row">
-
-	      <!-- Earnings (Monthly) Card Example -->
-	    <div class="col-12">
-
-	    <!-- Default Card Example -->
-	    <div class="card mb-4">
-	      <div class="card-header">
-	      	<%= test.quiz.name %> <span class="badge badge-info"><%= test.applicant_test_status.name %></span>
-	      </div>
-	      <div class="card-body">
-	      	<% if test.applicant_test_status.name == "Completado" %>
-	      		<div>
-	      			<%= "Nota: #{test.grade}%" %>
-	      		</div>
-	      		<div>
-	      			<%= "Preguntas Correctas: #{test.applicant_test_answers.correct.count}" %>
-	      		</div>
-	      		<div>
-	      			<%= "Cantidad de Preguntas #{test.quiz.questions.count}" %>
-	      		</div>
-	      	<% end %>
-	      	
-	      	
-	      	<br>
-			<%= test.quiz.description %>	        
-			<%= link_to applicant_applicant_test_path(@applicant, test), class: "btn btn-facebook" do %>
-	          Ver
-	        <% end %>
-	        <%= link_to applicant_applicant_test_path(@applicant, test), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
-	        	Borrar
-	        <% end %>
-	        
-	      </div>
-	    </div>
-
-
-	  </div>
-
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-12">
+			<!-- Default Card Example -->
+			<div class="card mb-4">
+				<div class="card-header">
+					No se han asignado Test a Realizar
+				</div>
+				<div class="card-body">
+					<%= link_to 'Agregue el primer Test', new_applicant_applicant_test_path(@applicant), class: "btn btn-warning" %>
+				</div>
+			</div>
+		</div>
 	</div>
 
 
-<% end %>
+<% else %>
 
+
+	<div class="row">
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-12">
+			<!-- Default Card Example -->
+			<div class="card mb-4">
+				<div class="card-header">
+					Test Asignados
+				</div>
+				<div class="card-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Test</th>
+								<th>Estado</th>
+								<th>Correctas</th>
+								<th>Preguntas</th>
+								<th>opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @applicant.applicant_tests.each do |test| %>
+							<tr>
+								<td><%= test.quiz.name %></td>
+								<td><span class="badge badge-info"><%= test.applicant_test_status.name %></td>
+								<td><%= test.applicant_test_answers.correct.count %></td>
+								<td><%= test.quiz.questions.count %></td>
+								<td>
+									<%= link_to applicant_applicant_test_path(@applicant, test), class: "btn btn-sm btn-info" do %>
+										Ver
+									<% end %>
+									<%= link_to applicant_applicant_test_path(@applicant, test), method: :delete, data: { confirm: 'Seguro(a)?' }, class: "btn btn-sm btn-danger" do %>
+										Borrar
+									<% end %>
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% end %>
 
 

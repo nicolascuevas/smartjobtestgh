@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Postulante <%= @applicant.full_name %>, Ha respondido sus todos sus test!</p>
+    <p>
+    Detalle<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @applicant.full_name %></p>
+    <p>Email: <%= @applicant.email %></p>
+    <p>tests <%= @applicant.applicant_tests.count %></p>
+    <p>
+    Message:<br>
+    Haz click en el siguiente link para ingresar a la plataforma
+    </p>
+    <p>
+        <a href="<%= root_url %>">Ir a la Plataforma</a>
+    </p>
+  </body>
+</html>

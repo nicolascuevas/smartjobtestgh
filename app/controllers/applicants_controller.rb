@@ -7,6 +7,10 @@ class ApplicantsController < ApplicationController
   # GET /applicants or /applicants.json
   def index
     @applicants = Applicant.all
+    @applicants = @applicants.where("email ilike ?", "%#{params[:email]}%" ) if params[:email].present?
+    @applicants = @applicants.where("first_name ilike ?", "%#{params[:first_name]}%" ) if params[:first_name].present?
+    @applicants = @applicants.where("last_name ilike ?", "%#{params[:last_name]}%" ) if params[:last_name].present?
+
   end
 
   # GET /applicants/1 or /applicants/1.json
@@ -30,7 +34,7 @@ class ApplicantsController < ApplicationController
   # POST /applicants or /applicants.json
   def create
     @applicant = Applicant.new(applicant_params)
-
+    @applicant.user = current_user
     respond_to do |format|
       if @applicant.save
         format.html { redirect_to @applicant, notice: "Applicant was successfully created." }

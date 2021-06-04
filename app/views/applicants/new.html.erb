@@ -1,5 +1,24 @@
-<h1>New Applicant</h1>
+<h1>Agregar Postulantes</h1>
 
-<%= render 'form', applicant: @applicant %>
 
-<%= link_to 'Back', applicants_path %>
+<%= link_to 'Volver a Postulantes', applicants_path %>
+
+
+
+<div class="row">
+
+	      <!-- Earnings (Monthly) Card Example -->
+	<div class="col-12">
+
+	    <!-- Default Card Example -->
+	    <div class="card mb-4">
+	      <div class="card-header">
+	      	Datos del Postulante
+	      </div>
+	      <div class="card-body">
+            <%= render 'form', applicant: @applicant %>
+          </div>
+        </div>
+    </div>
+</div>
+
