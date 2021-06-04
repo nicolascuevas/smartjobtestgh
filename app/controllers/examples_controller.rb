@@ -2,6 +2,13 @@ class ExamplesController < ApplicationController
   before_action :set_variables
   layout 'auth', only: %i[login register forgot_password]
 
+
+  def index
+    @applicants_count = Applicant.all.count
+    @quizzez_count = Quiz.all.count
+    @assigned_test = ApplicantTest.all.count
+  end
+
   private
 
   def set_variables
